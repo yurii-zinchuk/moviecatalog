@@ -12,8 +12,8 @@ import com.zinchuk.data.mappers.MovieFavouriteEntityToDomainMapper
 import com.zinchuk.data.sources.local.LocalMovieDataSource
 import com.zinchuk.data.sources.remote.RemoteMovieDataSource
 import com.zinchuk.data.sources.remote.api.dto.MovieDTO
-import com.zinchuk.domain.Movie
-import com.zinchuk.domain.MovieRepository
+import com.zinchuk.domain.models.Movie
+import com.zinchuk.domain.repositories.MovieRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

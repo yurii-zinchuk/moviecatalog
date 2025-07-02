@@ -1,6 +1,7 @@
-package com.zinchuk.domain
+package com.zinchuk.domain.repositories
 
 import androidx.paging.PagingData
+import com.zinchuk.domain.models.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {

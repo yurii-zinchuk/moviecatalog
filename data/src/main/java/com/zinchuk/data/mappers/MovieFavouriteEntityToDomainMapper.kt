@@ -1,7 +1,7 @@
 package com.zinchuk.data.mappers
 
 import com.zinchuk.data.sources.local.room.entities.MovieFavouriteEntity
-import com.zinchuk.domain.Movie
+import com.zinchuk.domain.models.Movie
 import javax.inject.Inject
 
 internal class MovieFavouriteEntityToDomainMapper @Inject constructor() {
