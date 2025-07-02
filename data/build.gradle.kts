@@ -60,6 +60,9 @@ kapt {
 
 dependencies {
 
+    // Project
+    implementation(project(":domain"))
+
     // Gson
     implementation(libs.gson)
 

@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.zinchuk.moviescatalog"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.zinchuk.moviescatalog"
