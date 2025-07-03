@@ -28,6 +28,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import java.util.Locale
 
 @Composable
 internal fun MovieCard(
@@ -75,7 +76,7 @@ internal fun MovieCard(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = "★ ${movie.voteAverage}",
+                        text = "★ ${String.format(Locale.US, "%.1f", movie.voteAverage)}",
                         style = MaterialTheme.typography.labelMedium
                     )
 
