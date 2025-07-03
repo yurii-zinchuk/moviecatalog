@@ -2,10 +2,11 @@ package com.zinchuk.domain.usecases
 
 import com.zinchuk.domain.models.Movie
 import com.zinchuk.domain.repositories.MovieRepository
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GetFavoriteMoviesUseCase @Inject constructor(
-    private val repository: MovieRepository
+    private val movieRepository: MovieRepository,
 ) {
-    suspend operator fun invoke(): List<Movie> = repository.getFavoriteMovies()
+    operator fun invoke(): Flow<List<Movie>> = movieRepository.getFavoriteMovies()
 }
