@@ -1,17 +1,24 @@
 package com.zinchuk.data.sources.local.room.dao
 
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.zinchuk.data.sources.local.room.entities.MovieEntity
 import com.zinchuk.data.sources.local.room.entities.MovieFavouriteEntity
+import com.zinchuk.domain.models.Movie
+import kotlinx.coroutines.flow.Flow
 
 
 @Dao
 internal interface MovieFavouriteDao {
     @Query("SELECT * FROM favorite_movies ORDER BY releaseDate DESC")
-    suspend fun getAll(): List<MovieFavouriteEntity>
+    fun getAll(): Flow<List<MovieFavouriteEntity>>
+
+    @Query("SELECT * FROM favorite_movies ORDER BY releaseDate DESC")
+    fun getAllPaged(): PagingSource<Int, MovieFavouriteEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun add(movie: MovieFavouriteEntity)

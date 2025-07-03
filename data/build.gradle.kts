@@ -78,7 +78,6 @@ dependencies {
     kapt(libs.hilt.compiler)
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
-    implementation(libs.hilt.android.work)
 
     // Room
     ksp(libs.room.compiler)

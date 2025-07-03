@@ -47,14 +47,16 @@ internal class MovieRepositoryImpl @Inject constructor(
             }
     }
 
-    override suspend fun getCachedFirstPage(): List<Movie> {
-        return localMovieDataSource.getCached()
-            .map { movieEntityToDomainMapper.map(it) }
-    }
-
-    override suspend fun getFavoriteMovies(): List<Movie> {
-        return localMovieDataSource.getFavorites()
-            .map { movieFavouriteEntityToDomainMapper.map(it) }
+    override suspend fun getCachedMovies(): Flow<PagingData<Movie>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 20,
+                enablePlaceholders = false,
+            ),
+            pagingSourceFactory = { localMovieDataSource.getCached() }
+        ).flow.map { pagingData ->
+            pagingData.map { movieEntityToDomainMapper.map(it) }
+        }
     }
 
     override suspend fun addFavorite(movie: Movie) {
@@ -69,6 +71,23 @@ internal class MovieRepositoryImpl @Inject constructor(
 
     override suspend fun isFavorite(id: Int): Boolean {
         return localMovieDataSource.isFavorite(id)
+    }
+
+    override fun getFavoriteMovies(): Flow<List<Movie>> {
+        return localMovieDataSource.getFavorites()
+            .map { list -> list.map { movieFavouriteEntityToDomainMapper.map(it) } }
+    }
+
+    override fun getFavoriteMoviesPaged(): Flow<PagingData<Movie>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 20,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { localMovieDataSource.getFavoritesPaged() }
+        ).flow.map { pagingData ->
+            pagingData.map { movieFavouriteEntityToDomainMapper.map(it) }
+        }
     }
 
     private suspend fun updateCache(movies: List<MovieDTO>) {

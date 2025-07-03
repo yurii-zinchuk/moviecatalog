@@ -6,7 +6,7 @@ import retrofit2.http.Header
 import retrofit2.http.Query
 import retrofit2.http.QueryMap
 
-interface MovieApi {
+internal interface MovieApi {
     @GET("discover/movie")
     suspend fun discoverMovies(
         @Header("Authorization") token: String,
@@ -18,7 +18,7 @@ interface MovieApi {
 private data object MovieQueryParams {
     private const val VOTE_AVG_THRESHOLD: Double = 7.0
     private const val VOTE_COUNT_THRESHOLD: Int = 100
-    private const val SORT_BY: String = "release_date.desc"
+    private const val SORT_BY: String = "primary_release_date.desc"
 
     fun toQueryMap(): Map<String, String> = mapOf(
         "vote_average.gte" to VOTE_AVG_THRESHOLD.toString(),

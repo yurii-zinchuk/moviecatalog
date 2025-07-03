@@ -1,5 +1,6 @@
 package com.zinchuk.data.sources.local.room.dao
 
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -10,7 +11,7 @@ import com.zinchuk.data.sources.local.room.entities.MovieEntity
 @Dao
 internal interface MovieCachedDao {
     @Query("SELECT * FROM cached_movies ORDER BY releaseDate DESC")
-    suspend fun getAll(): List<MovieEntity>
+    fun getAll(): PagingSource<Int, MovieEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(movies: List<MovieEntity>)
