@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.kotlin.ksp)
+    alias(libs.plugins.hilt.android)
 }
 
 android {
@@ -47,10 +48,23 @@ kapt {
 
 dependencies {
 
+    // Project
+    implementation(project(":domain"))
+    implementation(project(":data"))
+
+    // Paging
+    implementation(libs.paging.runtime)
+    implementation(libs.paging.compose)
+
+    // Coil
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network)
+
     // Hilt
     kapt(libs.hilt.android.compiler)
     kapt(libs.hilt.compiler)
     implementation(libs.hilt.android)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 
     // Core
     implementation(libs.androidx.core.ktx)
