@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.hilt.android)
+    alias(libs.plugins.ktlint.gradle)
 }
 
 android {
@@ -44,7 +45,19 @@ android {
 kapt {
     correctErrorTypes = true
 }
-
+ktlint {
+    android.set(true)
+    enableExperimentalRules.set(true)
+    additionalEditorconfig.set(
+        mapOf(
+            "ktlint_code_style" to "ktlint_official",
+            "ktlint_function_naming_ignore_when_annotated_with" to "Composable",
+            "ktlint_ignore_back_ticked_identifier" to "true",
+            "ktlint_standard_package-name" to "disabled",
+            "ktlint_standard_backing-property-naming" to "disabled",
+        ),
+    )
+}
 
 dependencies {
 
