@@ -22,7 +22,9 @@ internal fun PagingData<MovieCardData>.withDateHeaders(): PagingData<MovieListIt
 
             if (afterLabel != null && beforeLabel != afterLabel) {
                 MovieListItem.Header(afterLabel)
-            } else null
+            } else {
+                null
+            }
         }
 }
 

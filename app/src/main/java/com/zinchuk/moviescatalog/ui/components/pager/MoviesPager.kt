@@ -19,13 +19,15 @@ import kotlinx.coroutines.launch
 @Composable
 fun MoviesPager() {
     val tabs = Tab.entries
-    val pagerState = rememberPagerState(
-        pageCount = { tabs.size }
-    )
+    val pagerState =
+        rememberPagerState(
+            pageCount = { tabs.size },
+        )
 
     Column(
-        modifier = Modifier
-            .fillMaxSize()
+        modifier =
+            Modifier
+                .fillMaxSize(),
     ) {
         TabRow(
             selectedTabIndex = pagerState.currentPage,
@@ -35,15 +37,16 @@ fun MoviesPager() {
                 Tab(
                     selected = pagerState.currentPage == index,
                     onClick = { scope.launch { pagerState.animateScrollToPage(index) } },
-                    text = { Text(tab.name.capitalize(Locale.current)) }
+                    text = { Text(tab.name.capitalize(Locale.current)) },
                 )
             }
         }
 
         HorizontalPager(
             state = pagerState,
-            modifier = Modifier
-                .fillMaxSize()
+            modifier =
+                Modifier
+                    .fillMaxSize(),
         ) { page ->
             when (Tab.entries[page]) {
                 Tab.ALL -> AllMoviesTab()

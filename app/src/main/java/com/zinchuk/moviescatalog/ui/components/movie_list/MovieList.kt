@@ -16,14 +16,13 @@ import androidx.paging.compose.LazyPagingItems
 import com.zinchuk.moviescatalog.ui.components.movie_card.MovieCard
 import com.zinchuk.moviescatalog.ui.components.movie_card.MovieCardData
 
-
 @Composable
 internal fun MovieList(
     items: LazyPagingItems<MovieListItem>,
     onLikeToggle: (MovieCardData) -> Unit,
 ) {
     LazyColumn(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
     ) {
         items(
             count = items.itemCount,
@@ -34,7 +33,7 @@ internal fun MovieList(
                     Text(
                         text = item.label,
                         style = MaterialTheme.typography.titleLarge,
-                        modifier = Modifier.padding(16.dp)
+                        modifier = Modifier.padding(16.dp),
                     )
                 }
 
@@ -42,12 +41,12 @@ internal fun MovieList(
                     MovieCard(
                         movie = item.movie,
                         onLikeToggle = { onLikeToggle(item.movie) },
-                        onShareClick = { /* TODO: Implement share */ }
+                        onShareClick = { /* TODO: Implement share */ },
                     )
                 }
 
                 null -> {
-                    /* no-op */
+                    // no-op
                 }
             }
         }
@@ -57,9 +56,10 @@ internal fun MovieList(
                 loadState.append is LoadState.Loading -> {
                     item {
                         Box(
-                            modifier = Modifier
-                                .fillParentMaxWidth(),
-                            contentAlignment = Alignment.Center
+                            modifier =
+                                Modifier
+                                    .fillParentMaxWidth(),
+                            contentAlignment = Alignment.Center,
                         ) {
                             CircularProgressIndicator()
                         }

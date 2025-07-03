@@ -16,17 +16,16 @@ import com.zinchuk.moviescatalog.R
 import com.zinchuk.moviescatalog.ui.components.movie_list.MovieList
 
 @Composable
-internal fun FavouriteMoviesTab(
-    vm: FavouriteMoviesViewModel = viewModel()
-) {
+internal fun FavouriteMoviesTab(vm: FavouriteMoviesViewModel = viewModel()) {
     val movies = vm.favoriteMovies.collectAsLazyPagingItems()
 
     if (movies.itemCount == 0) {
         Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(32.dp),
-            contentAlignment = Alignment.Center
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .padding(32.dp),
+            contentAlignment = Alignment.Center,
         ) {
             Text(stringResource(R.string.error_no_favorite), style = MaterialTheme.typography.bodyMedium)
         }

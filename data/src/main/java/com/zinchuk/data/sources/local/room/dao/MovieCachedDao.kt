@@ -7,7 +7,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.zinchuk.data.sources.local.room.entities.MovieEntity
 
-
 @Dao
 internal interface MovieCachedDao {
     @Query("SELECT * FROM cached_movies ORDER BY releaseDate DESC")

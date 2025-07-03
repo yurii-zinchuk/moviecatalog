@@ -10,16 +10,16 @@ import com.zinchuk.data.sources.remote.api.dto.MovieResponseDTO
 internal class RemoteMovieDataSource(
     private val api: MovieApi,
 ) : PagingSource<Int, MovieDTO>() {
-
     lateinit var onFirstPageLoaded: suspend (List<MovieDTO>) -> Unit
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieDTO> {
         return try {
             val page = params.key ?: PAGE_FIRST
-            val response: MovieResponseDTO = api.discoverMovies(
-                token = BuildConfig.TMDB_ACCESS_TOKEN,
-                page = page,
-            )
+            val response: MovieResponseDTO =
+                api.discoverMovies(
+                    token = BuildConfig.TMDB_ACCESS_TOKEN,
+                    page = page,
+                )
             val movies = response.results
 
             if (page == PAGE_FIRST) {
@@ -29,9 +29,8 @@ internal class RemoteMovieDataSource(
             LoadResult.Page(
                 data = movies,
                 prevKey = if (page == PAGE_FIRST) null else page.dec(),
-                nextKey = if (movies.isEmpty()) null else page.inc()
+                nextKey = if (movies.isEmpty()) null else page.inc(),
             )
-
         } catch (e: Exception) {
             LoadResult.Error(e)
         }

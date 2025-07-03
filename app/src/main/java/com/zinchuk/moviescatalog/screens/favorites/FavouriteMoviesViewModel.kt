@@ -21,27 +21,29 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-internal class FavouriteMoviesViewModel @Inject constructor(
-    private val removeFavoriteUseCase: RemoveFavoriteUseCase,
-    private val movieDomainToCardDataMapper: MovieDomainTOCardDataMapper,
-    private val movieCardDataTODomainMapper: MovieCardDataTODomainMapper,
-    getFavoriteMoviesPagedUseCase: GetFavoriteMoviesPagedUseCase,
-) : ViewModel() {
+internal class FavouriteMoviesViewModel
+    @Inject
+    constructor(
+        private val removeFavoriteUseCase: RemoveFavoriteUseCase,
+        private val movieDomainToCardDataMapper: MovieDomainTOCardDataMapper,
+        private val movieCardDataTODomainMapper: MovieCardDataTODomainMapper,
+        getFavoriteMoviesPagedUseCase: GetFavoriteMoviesPagedUseCase,
+    ) : ViewModel() {
+        val favoriteMovies: Flow<PagingData<MovieListItem>> =
+            getFavoriteMoviesPagedUseCase()
+                .map { movieList ->
+                    movieList.map { movie ->
+                        movieDomainToCardDataMapper.map(movie, isFavourite = true)
+                    }
+                }
+                .map { it.withDateHeaders() }
+                .flowOn(Dispatchers.IO)
+                .cachedIn(viewModelScope)
 
-    val favoriteMovies: Flow<PagingData<MovieListItem>> = getFavoriteMoviesPagedUseCase()
-        .map { movieList ->
-            movieList.map { movie ->
-                movieDomainToCardDataMapper.map(movie, isFavourite = true)
+        fun onToggleFavorite(movieData: MovieCardData) {
+            viewModelScope.launch {
+                val movie = movieCardDataTODomainMapper.map(movieData)
+                removeFavoriteUseCase(movie)
             }
         }
-        .map { it.withDateHeaders() }
-        .flowOn(Dispatchers.IO)
-        .cachedIn(viewModelScope)
-
-    fun onToggleFavorite(movieData: MovieCardData) {
-        viewModelScope.launch {
-            val movie = movieCardDataTODomainMapper.map(movieData)
-            removeFavoriteUseCase(movie)
-        }
     }
-}

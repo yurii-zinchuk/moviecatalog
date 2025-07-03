@@ -9,5 +9,5 @@ internal data class MovieEntity(
     val posterPath: String?,
     val releaseDate: String?,
     val voteAverage: Double,
-    val overview: String
+    val overview: String,
 )

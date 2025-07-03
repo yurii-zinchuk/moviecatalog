@@ -29,9 +29,7 @@ import com.zinchuk.moviescatalog.ui.components.movie_list.MovieList
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-internal fun AllMoviesTab(
-    vm: AllMoviesViewModel = viewModel()
-) {
+internal fun AllMoviesTab(vm: AllMoviesViewModel = viewModel()) {
     val state by vm.uiState.collectAsState()
 
     when (val uiState = state) {
@@ -55,7 +53,7 @@ internal fun AllMoviesTab(
                     loadState.refresh is LoadState.Loading && itemCount == 0 -> {
                         Box(
                             modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
+                            contentAlignment = Alignment.Center,
                         ) {
                             CircularProgressIndicator()
                         }
@@ -72,7 +70,7 @@ internal fun AllMoviesTab(
                 if (items.itemCount > 0) {
                     MovieList(
                         items = items,
-                        onLikeToggle = vm::onToggleFavorite
+                        onLikeToggle = vm::onToggleFavorite,
                     )
                 }
             }
@@ -86,32 +84,34 @@ internal fun AllMoviesTab(
                 onRefresh = vm::loadMovies,
             ) {
                 Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp)
+                    modifier =
+                        Modifier
+                            .fillMaxSize()
+                            .padding(16.dp),
                 ) {
                     Text(
                         text = stringResource(R.string.error_load_failed),
                         style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.error
+                        color = MaterialTheme.colorScheme.error,
                     )
                     Spacer(modifier = Modifier.height(4.dp))
 
                     if (cachedItems.itemCount > 0) {
                         Text(
                             text = stringResource(R.string.message_showing_cached),
-                            style = MaterialTheme.typography.bodyMedium
+                            style = MaterialTheme.typography.bodyMedium,
                         )
                         Spacer(modifier = Modifier.height(16.dp))
                         MovieList(
                             items = cachedItems,
-                            onLikeToggle = vm::onToggleFavorite
+                            onLikeToggle = vm::onToggleFavorite,
                         )
                     } else if (cachedItems.loadState.refresh !is LoadState.Loading) {
                         Column(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .verticalScroll(rememberScrollState()),
+                            modifier =
+                                Modifier
+                                    .fillMaxSize()
+                                    .verticalScroll(rememberScrollState()),
                             verticalArrangement = Arrangement.Center,
                             horizontalAlignment = Alignment.CenterHorizontally,
                         ) {

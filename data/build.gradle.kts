@@ -1,9 +1,10 @@
 import java.util.Properties
 
-val localProperties = project.rootProject.file("local.properties")
-    .takeIf { it.exists() }
-    ?.inputStream()
-    ?.use { Properties().apply { load(it) } }
+val localProperties =
+    project.rootProject.file("local.properties")
+        .takeIf { it.exists() }
+        ?.inputStream()
+        ?.use { Properties().apply { load(it) } }
 
 val tmdbAccessToken = localProperties?.getProperty("tmdb.access_token") ?: ""
 
@@ -36,7 +37,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }

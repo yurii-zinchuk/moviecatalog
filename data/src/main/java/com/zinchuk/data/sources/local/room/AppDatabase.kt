@@ -15,6 +15,7 @@ private const val DATABASE_NAME = "MovieCatalogAppDB"
 @Database(entities = [MovieEntity::class, MovieFavouriteEntity::class], version = 1)
 internal abstract class AppDatabase : RoomDatabase() {
     abstract fun cachedDao(): MovieCachedDao
+
     abstract fun favouriteDao(): MovieFavouriteDao
 
     internal companion object {

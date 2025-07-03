@@ -16,9 +16,10 @@ import com.zinchuk.moviescatalog.ui.components.pager.MoviesPager
 @OptIn(ExperimentalMaterial3Api::class)
 internal fun MoviesScreen() {
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .safeDrawingPadding(),
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .safeDrawingPadding(),
     ) {
         TopAppBar(
             title = {
