@@ -20,19 +20,19 @@ internal fun PagingData<MovieCardData>.withDateHeaders(): PagingData<MovieListIt
             val beforeLabel = beforeDate?.let { formatMonthYear(it) }
             val afterLabel = afterDate?.let { formatMonthYear(it) }
 
-            if (beforeLabel != afterLabel) {
-                MovieListItem.Header(afterLabel ?: "Unknown")
+            if (afterLabel != null && beforeLabel != afterLabel) {
+                MovieListItem.Header(afterLabel)
             } else null
         }
 }
 
-private fun formatMonthYear(dateStr: String): String {
+private fun formatMonthYear(dateStr: String): String? {
     return try {
         val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
         val outputFormat = SimpleDateFormat("MMM yyyy", Locale.US)
         val date = inputFormat.parse(dateStr)
         outputFormat.format(date!!)
     } catch (e: Exception) {
-        "Unknown"
+        null
     }
 }

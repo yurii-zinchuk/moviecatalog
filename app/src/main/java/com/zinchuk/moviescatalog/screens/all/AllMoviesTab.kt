@@ -19,10 +19,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.zinchuk.moviescatalog.R
 import com.zinchuk.moviescatalog.ui.components.movie_list.MovieList
 
 @Composable
@@ -89,7 +91,7 @@ internal fun AllMoviesTab(
                         .padding(16.dp)
                 ) {
                     Text(
-                        text = "Failed to load remote data",
+                        text = stringResource(R.string.error_load_failed),
                         style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.error
                     )
@@ -97,7 +99,7 @@ internal fun AllMoviesTab(
 
                     if (cachedItems.itemCount > 0) {
                         Text(
-                            text = "Showing cached movies",
+                            text = stringResource(R.string.message_showing_cached),
                             style = MaterialTheme.typography.bodyMedium
                         )
                         Spacer(modifier = Modifier.height(16.dp))
@@ -113,7 +115,7 @@ internal fun AllMoviesTab(
                             verticalArrangement = Arrangement.Center,
                             horizontalAlignment = Alignment.CenterHorizontally,
                         ) {
-                            Text("No cached movies available.")
+                            Text(stringResource(R.string.error_no_cached))
                         }
                     }
                 }

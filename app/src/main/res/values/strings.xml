@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">MovieCatalog</string>
+    <string name="app_name">Movie Cat</string>
+
+    <string name="error_load_failed">Failed to load remote data</string>
+    <string name="error_no_cached">No cached movies available</string>
+    <string name="error_no_favorite">No favorite movies yet.</string>
+
+    <string name="message_showing_cached">Showing cached movies</string>
+
 </resources>
