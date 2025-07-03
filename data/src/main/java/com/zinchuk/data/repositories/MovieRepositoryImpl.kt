@@ -18,6 +18,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
+private const val PAGE_SIZE = 20
+
 internal class MovieRepositoryImpl @Inject constructor(
     private val remoteMovieDataSource: () -> RemoteMovieDataSource,
     private val localMovieDataSource: LocalMovieDataSource,
@@ -31,9 +33,9 @@ internal class MovieRepositoryImpl @Inject constructor(
     override fun getPagedMovies(): Flow<PagingData<Movie>> {
         return Pager(
             config = PagingConfig(
-                pageSize = 20,
+                pageSize = PAGE_SIZE,
                 enablePlaceholders = false,
-                initialLoadSize = 20,
+                initialLoadSize = PAGE_SIZE,
             ),
             pagingSourceFactory = {
                 remoteMovieDataSource().apply {
@@ -50,7 +52,7 @@ internal class MovieRepositoryImpl @Inject constructor(
     override suspend fun getCachedMovies(): Flow<PagingData<Movie>> {
         return Pager(
             config = PagingConfig(
-                pageSize = 20,
+                pageSize = PAGE_SIZE,
                 enablePlaceholders = false,
             ),
             pagingSourceFactory = { localMovieDataSource.getCached() }
@@ -81,7 +83,7 @@ internal class MovieRepositoryImpl @Inject constructor(
     override fun getFavoriteMoviesPaged(): Flow<PagingData<Movie>> {
         return Pager(
             config = PagingConfig(
-                pageSize = 20,
+                pageSize = PAGE_SIZE,
                 enablePlaceholders = false
             ),
             pagingSourceFactory = { localMovieDataSource.getFavoritesPaged() }
