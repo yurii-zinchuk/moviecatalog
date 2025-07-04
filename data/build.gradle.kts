@@ -29,7 +29,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
 
-        buildConfigField("String", "TMDB_ACCESS_TOKEN", "\"Bearer $tmdbAccessToken\"")
+        buildConfigField("String", "TMDB_ACCESS_TOKEN", "\"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YmVhYWIxZDNmMjBkNWUwM2JmMGRkNGZhMTk1OTU3ZSIsIm5iZiI6MTc1MTM4MDE0MC4xMTIsInN1YiI6IjY4NjNmMGFjOTg0NjA3YzZjM2QxMjQ1NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.yNRuQ2XN8rJYXk5Mz0ni_wS_q_47HTX7VA5jS6PW_Cs\"")
     }
 
     buildTypes {

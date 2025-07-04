@@ -4,6 +4,19 @@ Movie Cat is a modern Android application that allows users to discover, browse,
 
 ---
 
+## ⚠️ Important – API Token Handling
+
+Originally, this project was designed to **keep the TMDB access token private**, following best practices:
+
+- The token was stored in `local.properties` (excluded from VCS).
+- It was injected into the app as a `BuildConfig` field using Gradle.
+
+However, to ensure **seamless setup and build** for reviewers and avoid missing token issues, the token was ultimately **hardcoded into the `BuildConfig`** during final submission. This will be reverted after review is completed.
+
+> ⚠️ **Note:** This is **not a recommended practice** for production or public repositories. In real-world scenarios, secrets should always be managed securely and never committed to source control.
+
+---
+
 ## 📸 Screenshots
 
 
