@@ -6,7 +6,7 @@ import com.zinchuk.domain.usecases.*
 import com.zinchuk.moviescatalog.mappers.*
 import com.zinchuk.moviescatalog.ui.components.movie_card.MovieCardData
 import com.zinchuk.domain.models.Movie
-import com.zinchuk.moviescatalog.MainDispatcherRule
+import com.zinchuk.moviescatalog.test_utils.MainDispatcherRule
 import io.mockk.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

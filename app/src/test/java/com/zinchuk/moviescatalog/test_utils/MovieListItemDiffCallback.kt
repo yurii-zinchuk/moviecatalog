@@ -1,4 +1,4 @@
-package com.zinchuk.moviescatalog.utils
+package com.zinchuk.moviescatalog.test_utils
 
 import androidx.recyclerview.widget.DiffUtil
 import com.zinchuk.moviescatalog.ui.components.movie_list.MovieListItem

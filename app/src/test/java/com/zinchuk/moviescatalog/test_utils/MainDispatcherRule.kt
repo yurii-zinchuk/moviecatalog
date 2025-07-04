@@ -1,4 +1,4 @@
-package com.zinchuk.moviescatalog
+package com.zinchuk.moviescatalog.test_utils
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

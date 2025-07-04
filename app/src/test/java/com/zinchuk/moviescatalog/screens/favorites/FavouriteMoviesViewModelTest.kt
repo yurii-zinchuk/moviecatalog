@@ -2,18 +2,17 @@ package com.zinchuk.moviescatalog.screens.favorites
 
 import androidx.paging.AsyncPagingDataDiffer
 import androidx.paging.PagingData
-import androidx.paging.testing.asSnapshot
 import app.cash.turbine.test
 import com.zinchuk.domain.models.Movie
 import com.zinchuk.domain.usecases.GetFavoriteMoviesPagedUseCase
 import com.zinchuk.domain.usecases.RemoveFavoriteUseCase
-import com.zinchuk.moviescatalog.MainDispatcherRule
+import com.zinchuk.moviescatalog.test_utils.MainDispatcherRule
 import com.zinchuk.moviescatalog.mappers.MovieCardDataTODomainMapper
 import com.zinchuk.moviescatalog.mappers.MovieDomainTOCardDataMapper
 import com.zinchuk.moviescatalog.ui.components.movie_card.MovieCardData
 import com.zinchuk.moviescatalog.ui.components.movie_list.MovieListItem
-import com.zinchuk.moviescatalog.utils.MovieListItemDiffCallback
-import com.zinchuk.moviescatalog.utils.NoopListCallback
+import com.zinchuk.moviescatalog.test_utils.MovieListItemDiffCallback
+import com.zinchuk.moviescatalog.test_utils.NoopListCallback
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
