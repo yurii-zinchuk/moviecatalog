@@ -51,7 +51,7 @@ internal class MovieRepositoryImpl
                 }
         }
 
-        override suspend fun getCachedMovies(): Flow<PagingData<Movie>> {
+        override fun getCachedMovies(): Flow<PagingData<Movie>> {
             return Pager(
                 config =
                     PagingConfig(

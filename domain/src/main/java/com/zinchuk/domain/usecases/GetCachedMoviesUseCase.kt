@@ -9,5 +9,5 @@ import javax.inject.Inject
 class GetCachedMoviesUseCase @Inject constructor(
     private val repository: MovieRepository
 ) {
-    suspend operator fun invoke(): Flow<PagingData<Movie>> = repository.getCachedMovies()
+    operator fun invoke(): Flow<PagingData<Movie>> = repository.getCachedMovies()
 }
