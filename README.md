@@ -22,24 +22,24 @@ However, to ensure **seamless setup and build** for reviewers and avoid missing 
 
 ### 🔄 Loading States
 
-| Initial Load | Refreshing | Pagination Append |
-|--------------|------------|-------------------|
+| Initial Load                                          | Refreshing                                          | Pagination Append                                  |
+|-------------------------------------------------------|-----------------------------------------------------|----------------------------------------------------|
 | ![Initial Load](docs/screenshots/loading_initial.jpg) | ![Refreshing](docs/screenshots/loading_refresh.jpg) | ![Pagination](docs/screenshots/loading_append.jpg) |
 
 ---
 
 ### 📦 Content States
 
-| Remote Data | Cached Data | Favorites |
-|-------------|-------------|-----------|
+| Remote Data                                    | Cached Data                                    | Favorites                                            |
+|------------------------------------------------|------------------------------------------------|------------------------------------------------------|
 | ![Remote](docs/screenshots/content_remote.jpg) | ![Cached](docs/screenshots/content_cached.jpg) | ![Favorites](docs/screenshots/content_favorites.jpg) |
 
 ---
 
 ### 🚫 Empty States
 
-| All Tab Empty | Favorites Tab Empty |
-|---------------|---------------------|
+| All Tab Empty                                | Favorites Tab Empty                                      |
+|----------------------------------------------|----------------------------------------------------------|
 | ![Empty All](docs/screenshots/empty_all.jpg) | ![Empty Favorites](docs/screenshots/empty_favorites.jpg) |
 
 ---
